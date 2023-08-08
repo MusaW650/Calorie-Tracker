@@ -1,8 +1,13 @@
-var totalCalories;
 var caloriesNumber;
 var userEntries = [];
 let count = 0;
-var itemCalories = 0;
+var itemCalories;
+var itemProtein;
+var itemCarbs;
+
+var itemsArray;
+
+var calorieTotal = 0;
 
 function getFoodInput(food) {
   var foodInput = document.getElementById("foodInput");
@@ -13,14 +18,10 @@ function getFoodInput(food) {
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
 
-    // Update the foodValue variable with the input's value
     foodValue = foodInput.value;
 
-    // Now you can use the foodValue variable as needed
-    console.log("Food value:", foodValue);
     getCalories(foodValue);
   });
-  return foodValue;
 }
 
 function getCalories(foodInput) {
@@ -32,32 +33,45 @@ function getCalories(foodInput) {
     headers: { "X-Api-Key": "DJiuqGRf0DFPdgizxWpwMg==HVtodR5ale4szXrU" },
     contentType: "application/json",
     success: function (nutrition) {
+      count++;
       console.log(nutrition);
-      const itemsArray = nutrition.items;
+      itemsArray = nutrition.items; // creates new array for each entry
+
+      console.log(count);
+
+      //const colonIndex = totalCalories.indexOf(':');
+      //  const valueString = totalCalories.substring(colonIndex + 1);
+
+      //   for (var i = 0; i < count; i++) {
+      //     itemCalories[i] = itemsArray[i].calories;
+      //     itemProtein[i] = itemsArray[i].protein_g;
+      //     itemCarbs[i] = itemsArray[i].carbohydrates_total_g;
+      //     console.log(itemCalories[i]);
+      //     // increaseCalories(itemCalories);
+      //     // increaseProtein(itemProtein);
+      //     // increaseCarbs(itemCarbs);
+
+      //   }
 
       itemCalories = itemsArray[0].calories;
       itemProtein = itemsArray[0].protein_g;
       itemCarbs = itemsArray[0].carbohydrates_total_g;
 
-      console.log(itemsArray[0].calories);
-      console.log(itemsArray[0].protein_g);
-      console.log(itemsArray[0].carbohydrates_total_g);
+      increaseCalories(itemCalories);
+      increaseProtein(itemProtein);
+      increaseCarbs(itemCarbs);
 
-      increaseCalories(itemCalories, 0);
-      increaseProtein(itemProtein, 0);
-      increaseCarbs(itemCarbs, 0);
+      calorieTotal += itemCalories;
 
-      //const data = JSON.stringify(nutrition);
-      // const array = data.split(",");
-      // for(var i = 0; i < count; i++) {
-      // totalCalories += itemsArray[2];
+      increaseTotalCals(calorieTotal);
 
-      // }
-      //const colonIndex = totalCalories.indexOf(':');
-      //  const valueString = totalCalories.substring(colonIndex + 1);
+      console.log(calorieTotal);
+      //document.write(calorieTotal);
 
-      // caloriesNumber = parseFloat(valueString);
-      //  console.log(caloriesNumber);
+      //const newH2 = document.createElement('h2');
+
+      // Set the content of the h2 element
+      //newH2.textContent = 'New H2 Element';
     },
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
@@ -67,5 +81,4 @@ function getCalories(foodInput) {
 
 getFoodInput();
 
-// console.log(totalCalories)
 //console.log(document.getElementById("Calories"))

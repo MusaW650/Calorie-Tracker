@@ -6,11 +6,10 @@ function updateProteinValue(itemProtein) {
    proteinValueElement.textContent = itemProtein;
   }
   
-  function increaseProtein(itemProtein, protein) {
+  function increaseProtein(itemProtein) {
   //  var calories = 0;
-    protein += itemProtein;
-    console.log(protein);
+    //protein += itemProtein;
+    //console.log(protein);
     updateProteinValue(itemProtein);
   }
   
-  increaseProtein();
