@@ -2,6 +2,7 @@ var totalCalories;
 var caloriesNumber;
 var userEntries = [];
 let count = 0;
+var itemCalories = 0;
 
 function getFoodInput(food) {
   var foodInput = document.getElementById("foodInput");
@@ -21,6 +22,7 @@ function getFoodInput(food) {
   });
   return foodValue;
 }
+
 function getCalories(foodInput) {
   var query = foodInput;
 
@@ -33,13 +35,22 @@ function getCalories(foodInput) {
       console.log(nutrition);
       const itemsArray = nutrition.items;
 
-      console.log(itemsArray);
-        console.log(itemsArray[0].calories);
+      itemCalories = itemsArray[0].calories;
+      itemProtein = itemsArray[0].protein_g;
+      itemCarbs = itemsArray[0].carbohydrates_total_g;
+
+      console.log(itemsArray[0].calories);
+      console.log(itemsArray[0].protein_g);
+      console.log(itemsArray[0].carbohydrates_total_g);
+
+      increaseCalories(itemCalories, 0);
+      increaseProtein(itemProtein, 0);
+      increaseCarbs(itemCarbs, 0);
 
       //const data = JSON.stringify(nutrition);
       // const array = data.split(",");
       // for(var i = 0; i < count; i++) {
-       // totalCalories += itemsArray[2];
+      // totalCalories += itemsArray[2];
 
       // }
       //const colonIndex = totalCalories.indexOf(':');
@@ -58,5 +69,3 @@ getFoodInput();
 
 // console.log(totalCalories)
 //console.log(document.getElementById("Calories"))
-
-

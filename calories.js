@@ -1,22 +1,23 @@
 //const headingElement = document.getElementById("Calories");
 
-let calories = 0;
-
 // const calories = document.createElement("span");
 // counterElement.textContent = Calories;
 
 //headingElement.insertAdjacentElement("afterend", totalCalories);
 
-function updateCaloriesValue() {
+function updateCaloriesValue(itemCalories) {
   const caloriesValueElement = document.getElementById("caloriesValue");
-  caloriesValueElement.textContent = calories;
+  const caloriesNumber = Number(caloriesValueElement);
+
+  
+  caloriesValueElement.textContent = itemCalories;
 }
 
-updateCaloriesValue();
-
-function increaseCalories() {
-  calories += caloriesNumber;
-  updateCaloriesValue();
+function increaseCalories(itemCalories, calories) {
+//  var calories = 0;
+  calories += itemCalories;
+  console.log(calories);
+  updateCaloriesValue(itemCalories);
 }
 
 increaseCalories();
