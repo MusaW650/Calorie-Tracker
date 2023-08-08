@@ -1,4 +1,4 @@
-function updateTotal(totalCals) {
+function updateTotalCals(totalCals) {
   const totalsCalorieValue = document.getElementById("totalCalsValue");
   //const total = Number(totalsCalorieValue);
 
@@ -6,5 +6,33 @@ function updateTotal(totalCals) {
 }
 
 function increaseTotalCals(totalCals) {
-  updateTotal(totalCals);
+  updateTotalCals(totalCals);
+
+
+}
+
+
+function updateTotalCarbs(totalCarbs) {
+  const totalsCarbsValue = document.getElementById("totalCarbsValue");
+  totalsCarbsValue.textContent = totalCarbs;
+}
+
+function increaseTotalCarbs(totalCarbs) {
+  updateTotalCarbs(totalCarbs);
+
+
+}
+
+
+
+
+function updateTotalProtein(totalProtein) {
+  const totalsProteinValue = document.getElementById("totalProteinValue");
+  //const total = Number(totalsCalorieValue);
+
+  totalsProteinValue.textContent = totalProtein;
+}
+
+function increaseTotalProtein(totalProtein) {
+  updateTotalProtein(totalProtein);
 }

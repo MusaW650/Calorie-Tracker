@@ -4,10 +4,11 @@ let count = 0;
 var itemCalories;
 var itemProtein;
 var itemCarbs;
-
 var itemsArray;
 
 var calorieTotal = 0;
+var carbsTotal = 0;
+var proteinTotal = 0;
 
 function getFoodInput(food) {
   var foodInput = document.getElementById("foodInput");
@@ -54,16 +55,23 @@ function getCalories(foodInput) {
       //   }
 
       itemCalories = itemsArray[0].calories;
-      itemProtein = itemsArray[0].protein_g;
       itemCarbs = itemsArray[0].carbohydrates_total_g;
+      itemProtein = itemsArray[0].protein_g;
 
       increaseCalories(itemCalories);
-      increaseProtein(itemProtein);
       increaseCarbs(itemCarbs);
+      increaseProtein(itemProtein);
+
 
       calorieTotal += itemCalories;
+      carbsTotal += itemCarbs;
+      proteinTotal += itemProtein;
 
-      increaseTotalCals(calorieTotal);
+      
+      increaseTotalCals(calorieTotal.toFixed(2));
+      increaseTotalCarbs(carbsTotal.toFixed(2));
+      increaseTotalProtein(proteinTotal.toFixed(2));
+
 
       console.log(calorieTotal);
       //document.write(calorieTotal);
