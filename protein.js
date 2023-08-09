@@ -7,9 +7,16 @@ function updateProteinValue(itemProtein) {
   }
   
   function increaseProtein(itemProtein) {
-  //  var calories = 0;
     //protein += itemProtein;
     //console.log(protein);
     updateProteinValue(itemProtein);
   }
-  
+
+
+  function deleteProtein() {
+  const proteinValueElement = document.getElementById("proteinValue");
+   // const caloriesNumber = Number(caloriesValueElement);
+
+   proteinValueElement.textContent = 0;
+
+}

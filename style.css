@@ -1,9 +1,62 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .titleBar {
-background-color: black;
-color:antiquewhite
+  background-color: black;
+  color: antiquewhite;
 }
 
+.itemCalories {
+  text-align: center;
+}
+
+.itemCarbs {
+  text-align: center;
+}
+
+.itemProtein {
+  text-align: center;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  
+}
+
+input {
+    height: 35%;
+    padding-right: 10px;
+}
+
+
+button {
+  background-color:red; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+
+button:active {
+    box-shadow:  7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    transform: translateY(4px);
+}
+
+.delete {
+    position: relative;
+  
+}

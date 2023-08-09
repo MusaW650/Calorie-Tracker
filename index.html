@@ -17,48 +17,52 @@
       </div>
     </section>
 
-    <!-- <input id="ozInput" class="input" type="text" name="oz measurement" placeholder="oz" required/>
-      <button type="submit">Submit</button> -->
+    <div class="inputContainer">
+      <input
+        id="foodInput"
+        class="userEntry"
+        type="text"
+        name="food"
+        placeholder="Ex: 6oz of sirloin steak"
+        required
+      />
+      <button id="submitButton" type="submit">Add Item</button>
+      <button class="delete" id="deleteButton">Delete All</button>
+      <script src="main.js"></script>
+    </div>
 
-    <input
-      id="foodInput"
-      class="input"
-      type="text"
-      name="food"
-      placeholder="Ex: 6oz of sirloin steak"
-      required
-    />
-    <button id="submitButton" type="submit">Add Food</button>
+    
 
-    <script src="main.js"></script>
-    <div id="pContainer">
-
-      <p id="calories">
+    <div id="itemContainer">
+      <p class="itemCalories" id="calories">
         Item Calories: <span id="caloriesValue">0</span>
         <script src="calories.js"></script>
       </p>
 
-      <p id="carbs">
+      <p class="itemCarbs" id="carbs">
         Item Carbs (g): <span id="carbsValue">0</span>
         <script src="carbs.js"></script>
       </p>
 
-      <p id="protein">
+      <p class="itemProtein" id="protein">
         Item Protein (g): <span id="proteinValue">0</span>
         <script src="protein.js"></script>
       </p>
     </div>
 
-    <h3 id="totalCalories">Total Calories: <span id="totalCalsValue">0</span></h3>
+    <h3 id="totalCalories">
+      Total Calories: <span id="totalCalsValue">0</span>
+    </h3>
     <script src="totals.js"></script>
 
-    <h3 id="totalCarbs">Total Carbs: <span id="totalCarbsValue">0</span></h3>
+    <h3 id="totalCarbs">
+      Total Carbs (g): <span id="totalCarbsValue">0</span>
+    </h3>
     <script src="totals.js"></script>
 
-    <h3 id="totalProtein">Total Protein: <span id="totalProteinValue">0</span></h3>
+    <h3 id="totalProtein">
+      Total Protein (g): <span id="totalProteinValue">0</span>
+    </h3>
     <script src="totals.js"></script>
-
-
-  
   </body>
 </html>

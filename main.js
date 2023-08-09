@@ -35,24 +35,8 @@ function getCalories(foodInput) {
     contentType: "application/json",
     success: function (nutrition) {
       count++;
-      console.log(nutrition);
+      //    console.log(nutrition);
       itemsArray = nutrition.items; // creates new array for each entry
-
-      console.log(count);
-
-      //const colonIndex = totalCalories.indexOf(':');
-      //  const valueString = totalCalories.substring(colonIndex + 1);
-
-      //   for (var i = 0; i < count; i++) {
-      //     itemCalories[i] = itemsArray[i].calories;
-      //     itemProtein[i] = itemsArray[i].protein_g;
-      //     itemCarbs[i] = itemsArray[i].carbohydrates_total_g;
-      //     console.log(itemCalories[i]);
-      //     // increaseCalories(itemCalories);
-      //     // increaseProtein(itemProtein);
-      //     // increaseCarbs(itemCarbs);
-
-      //   }
 
       itemCalories = itemsArray[0].calories;
       itemCarbs = itemsArray[0].carbohydrates_total_g;
@@ -62,19 +46,24 @@ function getCalories(foodInput) {
       increaseCarbs(itemCarbs);
       increaseProtein(itemProtein);
 
-
       calorieTotal += itemCalories;
       carbsTotal += itemCarbs;
       proteinTotal += itemProtein;
 
-      
       increaseTotalCals(calorieTotal.toFixed(2));
       increaseTotalCarbs(carbsTotal.toFixed(2));
       increaseTotalProtein(proteinTotal.toFixed(2));
 
+      const deleteButton = document.getElementById("deleteButton");
 
-      console.log(calorieTotal);
-      //document.write(calorieTotal);
+      deleteButton.addEventListener("click", function (event) {
+        deleteTotals();
+        deleteCals();
+        deleteCarbs();
+        deleteProtein();
+      });
+
+      //      console.log(calorieTotal);
 
       //const newH2 = document.createElement('h2');
 
@@ -89,4 +78,11 @@ function getCalories(foodInput) {
 
 getFoodInput();
 
-//console.log(document.getElementById("Calories"))
+// function deleteEntries() {
+//   const deleteButton = document.getElementById("deleteButton");
+
+// deleteButton.addEventListener("click", function (event) {
+
+// });
+
+// }
