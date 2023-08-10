@@ -1,6 +1,8 @@
 var caloriesNumber;
 var userEntries = [];
-let count = 0;
+let calorieWindowCount = 0;
+let carbsWindowCount = 0;
+let proteinWindowCount = 0;
 var itemCalories;
 var itemProtein;
 var itemCarbs;
@@ -9,9 +11,9 @@ var itemsArray;
 var calorieTotal = 0;
 var carbsTotal = 0;
 var proteinTotal = 0;
-let userCalsLimit = 0;
-let userCarbsLimit = 0;
-let userProteinGoal = 0;
+let userCalsLimit = null;
+let userCarbsLimit;
+let userProteinGoal;
 var userCalsLimitSet = false;
 var userCarbsLimitSet = false;
 var userProteinGoalSet = false;
@@ -40,7 +42,6 @@ function getCalories(foodInput) {
     headers: { "X-Api-Key": "DJiuqGRf0DFPdgizxWpwMg==HVtodR5ale4szXrU" },
     contentType: "application/json",
     success: function (nutrition) {
-      count++;
       itemsArray = nutrition.items; // creates new array for each entry
 
       itemCalories = itemsArray[0].calories;
@@ -59,15 +60,33 @@ function getCalories(foodInput) {
       increaseTotalCarbs(carbsTotal.toFixed(2));
       increaseTotalProtein(proteinTotal.toFixed(2));
 
-      if (calorieTotal > userCalsLimit && userCalsLimitSet == true) {
+      if (
+        calorieTotal > userCalsLimit &&
+        userCalsLimitSet == true &&
+        userCalsLimit != null &&
+        calorieWindowCount < 1
+      ) {
+        calorieWindowCount++;
         alert("you have exceeded your calorie limit!");
       }
 
-      if (carbsTotal > userCarbsLimit && userCarbsLimitSet == true) {
+      if (
+        carbsTotal > userCarbsLimit &&
+        userCarbsLimitSet == true &&
+        userCarbsLimit !== null &&
+        carbsWindowCount < 1
+      ) {
+        carbsWindowCount++;
         alert("you have exceeded your carbs limit!");
       }
 
-      if (proteinTotal >= userProteinGoal && userProteinGoalSet == true) {
+      if (
+        proteinTotal >= userProteinGoal &&
+        userProteinGoalSet == true &&
+        userProteinGoal !== null &&
+        proteinWindowCount < 1
+      ) {
+        proteinWindowCount++;
         alert("you have met your protein goal!");
       }
     },
@@ -100,7 +119,12 @@ function setCaloriesLimit() {
   calorieLimit.addEventListener("click", function (event) {
     userCalsLimitSet = true;
 
-    userCalsLimit = Number(window.prompt("Set calorie limit", ""));
+    const userInput = window.prompt("Set calorie limit", "");
+    if (userInput === null) {
+      userCalsLimit = null;
+    } else {
+      userCalsLimit = Number(userInput);
+    }
   });
 }
 
@@ -110,7 +134,14 @@ function setCarbsLimit() {
   carbsLimit.addEventListener("click", function (event) {
     userCarbsLimitSet = true;
 
-    userCarbsLimit = Number(window.prompt("Set carbs limit", ""));
+    const userInput = window.prompt("Set carbs limit", "");
+    if (userInput === null) {
+      userCarbsLimit = null;
+    } else {
+      userCarbsLimit = Number(userInput);
+    }
+
+    console.log(userCarbsLimit);
   });
 }
 
@@ -120,6 +151,12 @@ function setProteinGoal() {
   proteinGoal.addEventListener("click", function (event) {
     userProteinGoalSet = true;
 
-    userProteinGoal = Number(window.prompt("Set protein goal", ""));
+    const userInput = window.prompt("Set protein goal", "");
+    if (userInput === null) {
+      userProteinGoalSet = null;
+    } else {
+      userProteinGoal = Number(userInput);
+    }
+    console.log(userProteinGoal);
   });
 }
