@@ -28,10 +28,7 @@
       />
       <button id="submitButton" type="submit">Add Item</button>
       <button class="delete" id="deleteButton">Delete All</button>
-      <script src="main.js"></script>
     </div>
-
-    
 
     <div id="itemContainer">
       <p class="itemCalories" id="calories">
@@ -50,19 +47,34 @@
       </p>
     </div>
 
-    <h3 id="totalCalories">
-      Total Calories: <span id="totalCalsValue">0</span>
-    </h3>
+    <div class="totalContainer">
+      <div class="heading-container">
+        <h3 id="totalCalories">
+          Total Calories: <span id="totalCalsValue">0</span>
+        </h3>
+        <button class="totalCalories" id="caloriesButton">Set Limit</button>
+
+      </div>
+    
+      <div class="heading-container">
+        <h3 id="totalCarbs">
+          Total Carbs (g): <span id="totalCarbsValue">0</span>
+        </h3>
+        <button class="totalCarbs" id="carbsButton">Set Limit</button>
+      </div>
+    
+      <div class="heading-container">
+        <h3 id="totalProtein">
+          Total Protein (g): <span id="totalProteinValue">0</span>
+        </h3>
+        <button class="totalProtein" id="proteinButton">Set goal</button>
+      </div>
+    </div>
     <script src="totals.js"></script>
 
-    <h3 id="totalCarbs">
-      Total Carbs (g): <span id="totalCarbsValue">0</span>
-    </h3>
-    <script src="totals.js"></script>
 
-    <h3 id="totalProtein">
-      Total Protein (g): <span id="totalProteinValue">0</span>
-    </h3>
-    <script src="totals.js"></script>
+
+    <script src="main.js"></script>
+
   </body>
 </html>

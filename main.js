@@ -9,6 +9,12 @@ var itemsArray;
 var calorieTotal = 0;
 var carbsTotal = 0;
 var proteinTotal = 0;
+let userCalsLimit = 0;
+let userCarbsLimit = 0;
+let userProteinGoal = 0;
+var userCalsLimitSet = false;
+var userCarbsLimitSet = false;
+var userProteinGoalSet = false;
 
 function getFoodInput(food) {
   var foodInput = document.getElementById("foodInput");
@@ -35,7 +41,6 @@ function getCalories(foodInput) {
     contentType: "application/json",
     success: function (nutrition) {
       count++;
-      //    console.log(nutrition);
       itemsArray = nutrition.items; // creates new array for each entry
 
       itemCalories = itemsArray[0].calories;
@@ -54,21 +59,17 @@ function getCalories(foodInput) {
       increaseTotalCarbs(carbsTotal.toFixed(2));
       increaseTotalProtein(proteinTotal.toFixed(2));
 
-      const deleteButton = document.getElementById("deleteButton");
+      if (calorieTotal > userCalsLimit && userCalsLimitSet == true) {
+        alert("you have exceeded your calorie limit!");
+      }
 
-      deleteButton.addEventListener("click", function (event) {
-        deleteTotals();
-        deleteCals();
-        deleteCarbs();
-        deleteProtein();
-      });
+      if (carbsTotal > userCarbsLimit && userCarbsLimitSet == true) {
+        alert("you have exceeded your carbs limit!");
+      }
 
-      //      console.log(calorieTotal);
-
-      //const newH2 = document.createElement('h2');
-
-      // Set the content of the h2 element
-      //newH2.textContent = 'New H2 Element';
+      if (proteinTotal >= userProteinGoal && userProteinGoalSet == true) {
+        alert("you have met your protein goal!");
+      }
     },
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
@@ -77,12 +78,48 @@ function getCalories(foodInput) {
 }
 
 getFoodInput();
+deleteCheck();
+setCaloriesLimit();
+setCarbsLimit();
+setProteinGoal();
 
-// function deleteEntries() {
-//   const deleteButton = document.getElementById("deleteButton");
+function deleteCheck() {
+  const deleteAll = document.getElementById("deleteButton");
 
-// deleteButton.addEventListener("click", function (event) {
+  deleteAll.addEventListener("click", function (event) {
+    deleteTotals();
+    deleteCals();
+    deleteCarbs();
+    deleteProtein();
+  });
+}
 
-// });
+function setCaloriesLimit() {
+  calorieLimit = document.getElementById("caloriesButton");
 
-// }
+  calorieLimit.addEventListener("click", function (event) {
+    userCalsLimitSet = true;
+
+    userCalsLimit = Number(window.prompt("Set calorie limit", ""));
+  });
+}
+
+function setCarbsLimit() {
+  carbsLimit = document.getElementById("carbsButton");
+
+  carbsLimit.addEventListener("click", function (event) {
+    userCarbsLimitSet = true;
+
+    userCarbsLimit = Number(window.prompt("Set carbs limit", ""));
+  });
+}
+
+function setProteinGoal() {
+  proteinGoal = document.getElementById("proteinButton");
+
+  proteinGoal.addEventListener("click", function (event) {
+    userProteinGoalSet = true;
+
+    userProteinGoal = Number(window.prompt("Set protein goal", ""));
+  });
+}

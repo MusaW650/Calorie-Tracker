@@ -10,7 +10,7 @@ function updateProteinValue(itemProtein) {
     //protein += itemProtein;
     //console.log(protein);
     updateProteinValue(itemProtein);
-  }
+  } //delete function?
 
 
   function deleteProtein() {
